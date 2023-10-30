@@ -6,4 +6,4 @@
 4. Transform point cloud ->  world frame 
 5. concatenate point cloud with old point cloud 
 6. publish point cloud 
-7. rospy spin
+7. rospy spin# 3DModeling_PC
