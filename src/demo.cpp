@@ -17,7 +17,7 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& input_cloud)
     pcl::PassThrough<pcl::PointXYZ> pass;
     pass.setInputCloud(pcl_cloud.makeShared());
     pass.setFilterFieldName("z");  // Assuming z-axis is the depth dimension
-    pass.setFilterLimits(0.8, 1.0);  // Adjust as needed
+    pass.setFilterLimits(0.8, 1.1);  // Adjust as needed
     pcl::PointCloud<pcl::PointXYZ> filtered_cloud;
     pass.filter(filtered_cloud);
 

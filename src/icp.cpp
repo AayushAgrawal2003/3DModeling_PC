@@ -19,11 +19,6 @@ void cloudCallback(const sensor_msgs::PointCloud2::ConstPtr& msg)
     pcl::fromPCLPointCloud2(pcl_pc2, *current_cloud);
 
 
-    // if(first_cloud==0){
-    //     pcl::fromPCLPointCloud2(refernce_cloud , *current_cloud);
-
-    // }
-
     if(has_prev_cloud){
     // Perform ICP registration between current_cloud and prev_cloud
     pcl::IterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ> icp;
