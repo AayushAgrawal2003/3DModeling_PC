@@ -6,11 +6,15 @@ This a ros package to create a 3D reconstructed surface using point cloud data f
 
 ## TODO: 
 
-
-[X] Global point cloud: World Frame  
-[X] Point cloud subscriber 
-[X] Transform listner
-[X] Transform point cloud ->  world frame 
-[X] concatenate point cloud with old point cloud 
-[X] publish point cloud 
-[X] rospy spin# 3DModeling_PC
+- [X] Global point cloud: World Frame  
+- [X] Point cloud subscriber 
+- [X] Transform listner
+- [X] Transform point cloud ->  world frame 
+- [X] concatenate point cloud with old point cloud 
+- [X] publish point cloud 
+- [X] rospy spin# 3DModeling_PC
+- [ ] Convert transformation matrix to pose data
+	- [ ] Log data of relative transform and global transform
+	- [ ] COnvert this data to pose and then compare the values.
+- [] Calculate rough position of the model and create an automated process for picking frames
+- [] Fuse the 2 data sources together
