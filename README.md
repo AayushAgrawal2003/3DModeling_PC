@@ -18,3 +18,8 @@ This a ros package to create a 3D reconstructed surface using point cloud data f
 	- [ ] COnvert this data to pose and then compare the values.
 - [] Calculate rough position of the model and create an automated process for picking frames
 - [] Fuse the 2 data sources together
+
+- [] Create a distance calculator
+- [] Create the filter 
+- [] Calculate the min and max value
+- [] Make the values rosparams
