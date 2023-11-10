@@ -12,12 +12,16 @@ void pointCloudCallback(const sensor_msgs::PointCloud2::ConstPtr& input_cloud)
     // Convert PointCloud2 message to PCL point cloud
     pcl::PointCloud<pcl::PointXYZ> pcl_cloud;
     pcl::fromROSMsg(*input_cloud, pcl_cloud);
+    double max_body = 1.1;
+    double min_body = 0.8;
 
+    ros::param::get("/min_body" , min_body);
+    ros::param::get("/max_body" , max_body);
     // Create a filter object to remove points outside the desired distance range
     pcl::PassThrough<pcl::PointXYZ> pass;
     pass.setInputCloud(pcl_cloud.makeShared());
     pass.setFilterFieldName("z");  // Assuming z-axis is the depth dimension
-    pass.setFilterLimits(0.8, 1.1);  // Adjust as needed
+    pass.setFilterLimits(min_body, max_body);  // Adjust as needed
     pcl::PointCloud<pcl::PointXYZ> filtered_cloud;
     pass.filter(filtered_cloud);
 

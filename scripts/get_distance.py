@@ -37,6 +37,9 @@ class Depth():
                 
                 self.body_max = self.temp_max
                 self.body_min = self.temp_min
+
+                rospy.set_param('/max_body', float(self.body_max/1000))
+                rospy.set_param('/min_body', float(self.body_min/1000))
             else:
                 rospy.loginfo("No Depth Data")
 
