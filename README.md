@@ -20,5 +20,5 @@ This a ros package to create a 3D reconstructed surface using point cloud data f
 - [ ] Fuse the 2 data sources together
 - [X] Create a distance calculator
 - [X] Create the filter 
-- [ ] Calculate the min and max value
+- [X] Calculate the min and max value
 - [ ] Make the values rosparams
