@@ -30,6 +30,8 @@ void tfCallback(const sensor_msgs::PointCloud2::ConstPtr &new_cloud)
     if (previous + ros::Duration(1) < ros::Time::now()) {
     
     transform = tf_buffer.lookupTransform(target_frame, source_frame, ros::Time(0), ros::Duration(2.0));    
+    // Convert the transorform to pose data
+    // Publish pose data to a pose topic
     tf::StampedTransform transform_tf;
     tf::transformStampedMsgToTF(transform, transform_tf);
 

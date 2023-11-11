@@ -15,7 +15,9 @@ This a ros package to create a 3D reconstructed surface using point cloud data f
 - [X] rospy spin# 3DModeling_PC
 - [ ] Convert transformation matrix to pose data
 	- [ ] Log data of relative transform and global transform
-	- [ ] Convert this data to pose and then compare the values.
+	- [ ] Convert this data to pose and then compare the values
+	- [ ] Make one file for both ICP and global pose 
+	- [ ] Convert ICP to global
 - [ ] Calculate rough position of the model and create an automated process for picking frames
 - [ ] Fuse the 2 data sources together
 - [X] Create a distance calculator
