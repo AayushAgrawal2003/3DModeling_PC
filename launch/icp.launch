@@ -1,0 +1,5 @@
+<launch>
+<node name="distance" pkg="surface_pc" type="get_distance.py" output="screen"></node>
+  <node name="filter" pkg="surface_pc" type="demo" output="screen"/>
+  <node name="align" pkg="surface_pc" type="icp" output="screen"/>
+</launch>

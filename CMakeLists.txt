@@ -137,7 +137,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(distancefilter src/demo.cpp)
+add_executable(demo src/demo.cpp)
 add_executable(concat src/concat.cpp)
 add_executable(icp src/icp.cpp)
 
@@ -150,15 +150,15 @@ add_executable(icp src/icp.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(distancefilter ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(demo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(concat ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 add_dependencies(icp ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
+  
 
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(distancefilter
+target_link_libraries(demo
   ${catkin_LIBRARIES}
 )
 
