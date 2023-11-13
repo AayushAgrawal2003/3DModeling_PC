@@ -20,7 +20,7 @@ class Depth():
             self.pixel2depth()
             image = cv2.imread("/home/inspire_01/catkin_ws/src/surface_pc/data/test_images/main.png")
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            rospy.loginfo(str(self.body_max) + " " +str(self.body_min))
+            # rospy.loginfo(str(self.body_max) + " " +str(self.body_min))
             # cv2.imshow("test" , gray)
             # cv2.waitKey(0)
             self.temp_max = -1
@@ -41,8 +41,8 @@ class Depth():
                 rospy.set_param('/max_body', float(self.body_max/1000) + 0.1)
                 rospy.set_param('/min_body', float(self.body_min/1000) - 0.1)
             else:
-                rospy.loginfo("No Depth Data")
-
+                #rospy.loginfo("No Depth Data")
+                pass
             self.rate.sleep()
 
     def convert_depth_image(self,ros_image):
