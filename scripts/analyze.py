@@ -279,10 +279,12 @@ for i in data.split("\n"):
 
 vals = []
 for i in range(len(series1)-1):
+    temp_vals = 0
     for j in range(len(series1[i])):
         for k in range(len(series1[i][0])):
-            vals.append(abs(series1[i][j][k] - series2[i][j][k]))
-
+            temp_vals += abs(series1[i][j][k] - series2[i][j][k])
+    
+    vals.append(temp_vals)
 
 plt.plot(vals)
 plt.show()
