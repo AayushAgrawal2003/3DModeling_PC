@@ -56,7 +56,7 @@ void cloudCallback(const sensor_msgs::PointCloud2::ConstPtr& msg)
 
     Eigen::Matrix4f verify =   transform * initial_transform;
 
-    prev_cloud = registered_cloud.makeShared();
+    // prev_cloud = registered_cloud.makeShared();
 
     sensor_msgs::PointCloud2 registered_cloud_msg;
     pcl::toROSMsg(registered_cloud, registered_cloud_msg);
@@ -64,7 +64,7 @@ void cloudCallback(const sensor_msgs::PointCloud2::ConstPtr& msg)
 
     std::stringstream string;
     string << verify;
-    ROS_INFO("Transformation matrix 1:\n%s", string.str().c_str());
+    // ¸ROS_INFO("Transformation matrix 1:\n%s", string.str().c_str());
 
 
 
@@ -90,11 +90,21 @@ void cloudCallback(const sensor_msgs::PointCloud2::ConstPtr& msg)
 
     std::stringstream print;
     print << matrix_temp;
-    ROS_INFO("Transformation matrix 2:\n%s", print.str().c_str());
+    // ROS_INFO("Transformation matrix 2:\n%s", print.str().c_str());
 	
 
 
-    float prec = (matrix_temp - verify).sum();
+    float prec = (matrix_temp - verify).array().square().sum();
+    ROS_INFO("Precission Values:%f", prec);
+    
+
+    if ( prec < 0.06){
+	 prev_cloud = registered_cloud.makeShared();
+    
+    }
+
+    
+
     }
 
 
