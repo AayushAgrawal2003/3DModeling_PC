@@ -54,17 +54,51 @@ void cloudCallback(const sensor_msgs::PointCloud2::ConstPtr& msg)
     // Get the relative transform
     Eigen::Matrix4f transform = icp.getFinalTransformation();
 
-    Eigen::Matrix4f verify = transform * initial_transform;
-    
+    Eigen::Matrix4f verify = initial_transform * transform;
+
     prev_cloud = registered_cloud.makeShared();
 
     sensor_msgs::PointCloud2 registered_cloud_msg;
     pcl::toROSMsg(registered_cloud, registered_cloud_msg);
     aligned.publish(registered_cloud_msg);
-    // std::stringstream string;
-    // string << transform;
-    // ROS_INFO("Transformation matrix:\n%s", string.str().c_str());
+
+    std::stringstream string;
+    string << verify;
+    ROS_INFO("Transformation matrix 1:\n%s", string.str().c_str());
+
+
+
+
+    Eigen::Vector3f translation(
+        transform_bot.transform.translation.x,
+        transform_bot.transform.translation.y,
+        transform_bot.transform.translation.z);
+
+    Eigen::Quaternionf rotation(
+        transform_bot.transform.rotation.w,
+        transform_bot.transform.rotation.x,
+        transform_bot.transform.rotation.y,
+        transform_bot.transform.rotation.z);
+
+    // Create an Affine3f transformation
+    Eigen::Affine3f temp_test = Eigen::Translation3f(translation) * Eigen::Affine3f(rotation);
+
+    // Get the 4x4 matrix from the Affine3f transformation
+    Eigen::Matrix4f matrix_temp;
+    matrix_temp = temp_test.matrix();
+
+
+    std::stringstream print;
+    print << matrix_temp;
+    ROS_INFO("Transformation matrix 2:\n%s", print.str().c_str());
+	
+
+
+    float prec = (matrix_temp - verify).sum();
     }
+
+
+
     else{
         // Create a transform between the base and global point cloud
 
