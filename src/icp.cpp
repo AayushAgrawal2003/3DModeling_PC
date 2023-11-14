@@ -54,7 +54,7 @@ void cloudCallback(const sensor_msgs::PointCloud2::ConstPtr& msg)
     // Get the relative transform
     Eigen::Matrix4f transform = icp.getFinalTransformation();
 
-    Eigen::Matrix4f verify = initial_transform * transform;
+    Eigen::Matrix4f verify = transform * initial_transform;
 
     prev_cloud = registered_cloud.makeShared();
 
